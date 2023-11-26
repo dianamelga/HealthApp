@@ -1,7 +1,6 @@
 import React, {useEffect} from 'react';
 import {useAppleHealth} from '../hooks/applehealth/useAppleHealth';
-import {StyleSheet, Text, View} from 'react-native';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
+import Styled from './AppleHealthScreen.styled';
 
 const AppleHealthScreen = () => {
   const {
@@ -10,7 +9,7 @@ const AppleHealthScreen = () => {
     errorInitializing,
     basalEnergyBurnedKcals,
     activeEnergyBurnedKcals,
-    exerciseTimeSeconds,
+    exerciseTimeMinutes,
   } = useAppleHealth();
 
   useEffect(() => {
@@ -18,65 +17,30 @@ const AppleHealthScreen = () => {
   }, [initHealthKit]);
 
   return (
-    <View style={styles.body}>
-      <View style={styles.sectionContainer}>
-        <Text style={styles.sectionTitle}>React Native Health Example</Text>
-        <Text style={styles.sectionTitle}>Initialized</Text>
-        <Text style={styles.sectionDescription}>{initialized}</Text>
+    <Styled.Body>
+      <Styled.Container>
+        <Styled.Title>React Native Health Example</Styled.Title>
+        <Styled.Title>Initialized</Styled.Title>
+        <Styled.Description>{initialized}</Styled.Description>
         {errorInitializing && (
           <>
-            <Text style={styles.sectionTitle}>Error Initializing</Text>
-            <Text style={styles.sectionDescription}>{errorInitializing}</Text>
+            <Styled.Title>Error Initializing</Styled.Title>
+            <Styled.Description>{errorInitializing}</Styled.Description>
           </>
         )}
-        <Text style={styles.sectionTitle}>Exercise time in seconds</Text>
-        <Text style={styles.sectionDescription}>{exerciseTimeSeconds}</Text>
-        <Text style={styles.sectionTitle}>Basal Energy Burned Kcal</Text>
-        <Text style={styles.sectionDescription}>{basalEnergyBurnedKcals}</Text>
-        <Text style={styles.sectionTitle}>Active Energy Burned Kcal</Text>
-        <Text style={styles.sectionDescription}>{activeEnergyBurnedKcals}</Text>
-      </View>
-    </View>
+        <Styled.Title>Exercise time in seconds</Styled.Title>
+        <Styled.Description>{exerciseTimeMinutes}</Styled.Description>
+        <Styled.Title>Basal Energy Burned Kcal</Styled.Title>
+        <Styled.Description>
+          {Math.floor(basalEnergyBurnedKcals)}
+        </Styled.Description>
+        <Styled.Title>Active Energy Burned Kcal</Styled.Title>
+        <Styled.Description>
+          {Math.floor(activeEnergyBurnedKcals)}
+        </Styled.Description>
+      </Styled.Container>
+    </Styled.Body>
   );
 };
-
-const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
-  },
-  engine: {
-    position: 'absolute',
-    right: 0,
-  },
-  body: {
-    backgroundColor: Colors.white,
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
-  },
-});
 
 export default AppleHealthScreen;

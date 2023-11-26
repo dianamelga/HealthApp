@@ -20,6 +20,7 @@ export const useAppleHealth = () => {
     authStatus,
     heartRateSamples,
     exerciseTimeSeconds,
+    exerciseTimeMinutes: Math.floor(exerciseTimeSeconds),
     activeEnergyBurnedKcals,
     basalEnergyBurnedKcals,
   };
