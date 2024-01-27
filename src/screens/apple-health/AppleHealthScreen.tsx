@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {useAppleHealth} from '../hooks/applehealth/useAppleHealth';
+import {useAppleHealth} from '../../hooks/applehealth/useAppleHealth';
 import Styled from './AppleHealthScreen.styled';
 
 const AppleHealthScreen = () => {
@@ -13,7 +13,7 @@ const AppleHealthScreen = () => {
   } = useAppleHealth();
 
   useEffect(() => {
-    initHealthKit(new Date(2023, 10, 21), new Date(2023, 10, 22));
+    initHealthKit(new Date(2023, 10, 21), new Date(2024, 1, 29));
   }, [initHealthKit]);
 
   return (

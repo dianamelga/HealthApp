@@ -3,7 +3,8 @@ import {SafeAreaView, StatusBar} from 'react-native';
 import {PaperProvider, useTheme} from 'react-native-paper';
 
 import {AppleHealthProvider} from './src/modules/applehealth/AppleHealthContext';
-import AppleHealthScreen from './src/screens/AppleHealthScreen';
+import AppleHealthScreen from './src/screens/apple-health/AppleHealthScreen';
+import SplashScreen from './src/screens/splash/SplashScreen';
 
 export default function App() {
   const theme = useTheme();
@@ -12,7 +13,7 @@ export default function App() {
       <AppleHealthProvider>
         <PaperProvider theme={theme}>
           <StatusBar barStyle="dark-content" />
-          <SafeAreaView>
+          <SafeAreaView style={{flex: 1}}>
             <AppleHealthScreen />
           </SafeAreaView>
         </PaperProvider>
