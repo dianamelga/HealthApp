@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
-import {DefaultTheme, Text} from 'react-native-paper';
+import {DefaultTheme, Text, Button} from 'react-native-paper';
 
 const Styled = {
   Body: styled.View`
@@ -13,9 +13,16 @@ const Styled = {
   `,
   Title: styled(Text)`
     color: ${DefaultTheme.colors.primary};
+    font-size: 25px;
   `,
   Description: styled(Text)`
     color: ${DefaultTheme.colors.secondary};
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 35px;
+  `,
+  Button: styled(Button).attrs({})`
+    background-color: ${DefaultTheme.colors.tertiaryContainer};
   `,
 };
 

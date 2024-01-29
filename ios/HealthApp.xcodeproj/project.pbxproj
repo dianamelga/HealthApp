@@ -15,6 +15,7 @@
 		7699B88040F8A987B510C191 /* libPods-HealthApp-HealthAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-HealthApp-HealthAppTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		840B2F632B67EEF800DB8D8F /* WatchConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 840B2F622B67EEF800DB8D8F /* WatchConnectivity.framework */; };
+		840B2F682B6809D000DB8D8F /* RCTWatchConnectivityModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 840B2F672B6809D000DB8D8F /* RCTWatchConnectivityModule.m */; };
 		8428BE7D2B6711B300A67B4B /* WatchConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8428BE7C2B6711B300A67B4B /* WatchConnectivityManager.swift */; };
 		8428BE7F2B6711DE00A67B4B /* WatchConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8428BE7C2B6711B300A67B4B /* WatchConnectivityManager.swift */; };
 		843AA4BC2B658A41007E1D74 /* HealthAppWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843AA4BB2B658A41007E1D74 /* HealthAppWatchApp.swift */; };
@@ -80,6 +81,8 @@
 		5DCACB8F33CDC322A6C60F78 /* libPods-HealthApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HealthApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = HealthApp/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		840B2F622B67EEF800DB8D8F /* WatchConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchConnectivity.framework; path = System/Library/Frameworks/WatchConnectivity.framework; sourceTree = SDKROOT; };
+		840B2F642B68080400DB8D8F /* RCTWatchConnectivityModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCTWatchConnectivityModule.h; sourceTree = "<group>"; };
+		840B2F672B6809D000DB8D8F /* RCTWatchConnectivityModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCTWatchConnectivityModule.m; sourceTree = "<group>"; };
 		8428BE7C2B6711B300A67B4B /* WatchConnectivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivityManager.swift; sourceTree = "<group>"; };
 		843AA4B92B658A41007E1D74 /* HealthAppWatch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HealthAppWatch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		843AA4BB2B658A41007E1D74 /* HealthAppWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthAppWatchApp.swift; sourceTree = "<group>"; };
@@ -209,9 +212,19 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		840B2F662B68099900DB8D8F /* Bridges */ = {
+			isa = PBXGroup;
+			children = (
+				840B2F642B68080400DB8D8F /* RCTWatchConnectivityModule.h */,
+				840B2F672B6809D000DB8D8F /* RCTWatchConnectivityModule.m */,
+			);
+			path = Bridges;
+			sourceTree = "<group>";
+		};
 		8428BE742B6707C500A67B4B /* WatchConnectivity */ = {
 			isa = PBXGroup;
 			children = (
+				840B2F662B68099900DB8D8F /* Bridges */,
 				8428BE7C2B6711B300A67B4B /* WatchConnectivityManager.swift */,
 			);
 			path = WatchConnectivity;
@@ -586,6 +599,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				840B2F682B6809D000DB8D8F /* RCTWatchConnectivityModule.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
 				8428BE7D2B6711B300A67B4B /* WatchConnectivityManager.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,

@@ -10,15 +10,27 @@
 import Foundation
 import WatchConnectivity
 
-struct NotificationMessage: Identifiable {
-  let id = UUID()
-  let text: String
+@objcMembers
+class NotificationMessage: NSObject, Identifiable {
+    let id = UUID()
+    let text: String
+
+    init(text: String) {
+        self.text = text
+    }
 }
 
+
 //@available(iOS 13.0, *)
+@objcMembers
 final class WatchConnectivityManager: NSObject, ObservableObject {
   @Published var notificationMessage: NotificationMessage? = nil
-  @objc static let shared = WatchConnectivityManager()
+  static let shared = WatchConnectivityManager()
+  
+  // Add a method to notify when the notificationMessage changes
+  private func notifyNotificationMessageChanged() {
+      NotificationCenter.default.post(name: Notification.Name("NotificationMessageChanged"), object: self)
+  }
   
   private override init() {
     super.init()
@@ -32,7 +44,7 @@ final class WatchConnectivityManager: NSObject, ObservableObject {
   
   private let kMessageKey = "message"
   
-  @objc func send(_ message: String) {
+  func send(_ message: String) {
     guard WCSession.default.activationState == .activated else {
       print("activationState != .activated")
       return
@@ -65,6 +77,10 @@ extension WatchConnectivityManager: WCSessionDelegate {
       DispatchQueue.main.async { [weak self] in
         print("notification received: \(notificationText)")
         self?.notificationMessage = NotificationMessage(text: notificationText)
+        
+        #if os(iOS)
+        self?.notifyNotificationMessageChanged()
+        #endif
       }
     }
   }
