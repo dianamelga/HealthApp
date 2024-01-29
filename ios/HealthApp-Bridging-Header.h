@@ -8,6 +8,6 @@
 #ifndef HealthApp_Bridging_Header_h
 #define HealthApp_Bridging_Header_h
 
-#import "HealthApp-Swift.h"
+#import "HealthApp-Bridging-Header.h"
 
 #endif /* HealthApp_Bridging_Header_h */

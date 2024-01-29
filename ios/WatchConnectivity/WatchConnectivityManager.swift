@@ -15,7 +15,7 @@ struct NotificationMessage: Identifiable {
   let text: String
 }
 
-@available(iOS 13.0, *)
+//@available(iOS 13.0, *)
 final class WatchConnectivityManager: NSObject, ObservableObject {
   @Published var notificationMessage: NotificationMessage? = nil
   @objc static let shared = WatchConnectivityManager()
@@ -32,13 +32,14 @@ final class WatchConnectivityManager: NSObject, ObservableObject {
   
   private let kMessageKey = "message"
   
-  func send(_ message: String) {
+  @objc func send(_ message: String) {
     guard WCSession.default.activationState == .activated else {
       print("activationState != .activated")
       return
     }
     #if os(iOS)
     guard WCSession.default.isWatchAppInstalled else {
+      print("watch app is not installed")
       return
     }
     #else
@@ -50,13 +51,14 @@ final class WatchConnectivityManager: NSObject, ObservableObject {
     
     //          WCSession.default.transferUserInfo([kMessageKey : message])
     
+    print("attempt to send message:\(message)")
     WCSession.default.sendMessage([kMessageKey : message], replyHandler: nil) { error in
       print("Cannot send message: \(String(describing: error))")
     }
   }
 }
 
-@available(iOS 13.0, *)
+//@available(iOS 13.0, *)
 extension WatchConnectivityManager: WCSessionDelegate {
   func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
     if let notificationText = message[kMessageKey] as? String {

@@ -70,11 +70,11 @@ export const AppleHealthProvider: React.FC<Props> = ({children}) => {
       AppleHealthKit.getHeartRateSamples(
         options,
         (callbackError: string, results: HealthValue[]) => {
-          console.log(
-            `getHeartRateSamples=> error: ${callbackError} results: ${JSON.stringify(
-              results,
-            )}`,
-          );
+          // console.log(
+          //   `getHeartRateSamples=> error: ${callbackError} results: ${JSON.stringify(
+          //     results,
+          //   )}`,
+          // );
         },
       );
     },
@@ -85,11 +85,11 @@ export const AppleHealthProvider: React.FC<Props> = ({children}) => {
     AppleHealthKit.getAppleExerciseTime(
       options,
       (callbackError: string, results: HealthValue[]) => {
-        console.log(
-          `getAppleExerciseTime=> callbackError: ${callbackError} results: ${JSON.stringify(
-            results,
-          )}`,
-        );
+        // console.log(
+        //   `getAppleExerciseTime=> callbackError: ${callbackError} results: ${JSON.stringify(
+        //     results,
+        //   )}`,
+        // );
 
         const exerciseTimeSeconds = results.reduce(
           (acc, currentObject) => acc + currentObject.value,
@@ -106,11 +106,11 @@ export const AppleHealthProvider: React.FC<Props> = ({children}) => {
         options,
         (callbackError: string, results: HealthValue[]) => {
           /* Samples are now collected from HealthKit */
-          console.log(
-            `getActiveEnergyBurned=> callbackError: ${callbackError} results: ${JSON.stringify(
-              results,
-            )}`,
-          );
+          // console.log(
+          //   `getActiveEnergyBurned=> callbackError: ${callbackError} results: ${JSON.stringify(
+          //     results,
+          //   )}`,
+          // );
 
           const activeEnergyBurnedKcals = results.reduce(
             (acc, currentObject) => acc + currentObject.value,
@@ -129,11 +129,11 @@ export const AppleHealthProvider: React.FC<Props> = ({children}) => {
         options,
         (callbackError: string, results: HealthValue[]) => {
           /* Samples are now collected from HealthKit */
-          console.log(
-            `callbackError: ${callbackError} results: ${JSON.stringify(
-              results,
-            )}`,
-          );
+          // console.log(
+          //   `callbackError: ${callbackError} results: ${JSON.stringify(
+          //     results,
+          //   )}`,
+          // );
 
           const basalEnergyBurnedKcals = results.reduce(
             (acc, currentObject) => acc + currentObject.value,
