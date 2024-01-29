@@ -103,8 +103,10 @@ class WorkoutManager: NSObject, ObservableObject {
     func togglePause() {
         if running == true {
             self.pause()
+          WatchConnectivityManager.shared.send("workout paused")
         } else {
             resume()
+          WatchConnectivityManager.shared.send("workout resumed")
         }
     }
 

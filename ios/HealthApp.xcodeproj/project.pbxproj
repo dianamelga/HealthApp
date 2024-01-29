@@ -14,6 +14,8 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		7699B88040F8A987B510C191 /* libPods-HealthApp-HealthAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-HealthApp-HealthAppTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		8428BE7D2B6711B300A67B4B /* WatchConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8428BE7C2B6711B300A67B4B /* WatchConnectivityManager.swift */; };
+		8428BE7F2B6711DE00A67B4B /* WatchConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8428BE7C2B6711B300A67B4B /* WatchConnectivityManager.swift */; };
 		843AA4BC2B658A41007E1D74 /* HealthAppWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843AA4BB2B658A41007E1D74 /* HealthAppWatchApp.swift */; };
 		843AA4C02B658A43007E1D74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 843AA4BF2B658A43007E1D74 /* Assets.xcassets */; };
 		843AA4C32B658A43007E1D74 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 843AA4C22B658A43007E1D74 /* Preview Assets.xcassets */; };
@@ -76,6 +78,7 @@
 		5B7EB9410499542E8C5724F5 /* Pods-HealthApp-HealthAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HealthApp-HealthAppTests.debug.xcconfig"; path = "Target Support Files/Pods-HealthApp-HealthAppTests/Pods-HealthApp-HealthAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-HealthApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HealthApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = HealthApp/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8428BE7C2B6711B300A67B4B /* WatchConnectivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivityManager.swift; sourceTree = "<group>"; };
 		843AA4B92B658A41007E1D74 /* HealthAppWatch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HealthAppWatch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		843AA4BB2B658A41007E1D74 /* HealthAppWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthAppWatchApp.swift; sourceTree = "<group>"; };
 		843AA4BF2B658A43007E1D74 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -93,6 +96,7 @@
 		84D7A4452B66893C00AD3A42 /* MetricsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricsView.swift; sourceTree = "<group>"; };
 		84D7A4472B66899B00AD3A42 /* ElapsedTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElapsedTimeView.swift; sourceTree = "<group>"; };
 		84D7A4492B668B5D00AD3A42 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		84FD872B2B67CAB300D9BA9E /* HealthApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HealthApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-HealthApp-HealthAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HealthApp-HealthAppTests.release.xcconfig"; path = "Target Support Files/Pods-HealthApp-HealthAppTests/Pods-HealthApp-HealthAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -176,6 +180,8 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				84FD872B2B67CAB300D9BA9E /* HealthApp-Bridging-Header.h */,
+				8428BE742B6707C500A67B4B /* WatchConnectivity */,
 				13B07FAE1A68108700A75B9A /* HealthApp */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* HealthAppTests */,
@@ -197,6 +203,14 @@
 				843AA4B92B658A41007E1D74 /* HealthAppWatch Watch App.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		8428BE742B6707C500A67B4B /* WatchConnectivity */ = {
+			isa = PBXGroup;
+			children = (
+				8428BE7C2B6711B300A67B4B /* WatchConnectivityManager.swift */,
+			);
+			path = WatchConnectivity;
 			sourceTree = "<group>";
 		};
 		843AA4BA2B658A41007E1D74 /* HealthAppWatch Watch App */ = {
@@ -350,7 +364,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
+						LastSwiftMigration = 1520;
 					};
 					843AA4B82B658A41007E1D74 = {
 						CreatedOnToolsVersion = 15.2;
@@ -569,6 +583,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
+				8428BE7D2B6711B300A67B4B /* WatchConnectivityManager.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -587,6 +602,7 @@
 				84D7A44A2B668B5D00AD3A42 /* ComplicationController.swift in Sources */,
 				84D7A43A2B667C6300AD3A42 /* WorkoutManager.swift in Sources */,
 				84D7A43E2B66817900AD3A42 /* SummaryView.swift in Sources */,
+				8428BE7F2B6711DE00A67B4B /* WatchConnectivityManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -610,6 +626,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5B7EB9410499542E8C5724F5 /* Pods-HealthApp-HealthAppTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = ANB5JR6FGB;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -638,6 +655,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 89C6BE57DB24E9ADA2F236DE /* Pods-HealthApp-HealthAppTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = HealthAppTests/Info.plist;
@@ -683,6 +701,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.dianascode.HealthApp;
 				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = com.dianascode.HealthApp;
 				PRODUCT_NAME = HealthApp;
+				SWIFT_OBJC_BRIDGING_HEADER = "HealthApp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -713,6 +732,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.dianascode.HealthApp;
 				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = com.dianascode.HealthApp;
 				PRODUCT_NAME = HealthApp;
+				SWIFT_OBJC_BRIDGING_HEADER = "HealthApp-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -920,6 +940,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
@@ -970,6 +991,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 10.0;
