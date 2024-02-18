@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react';
 import {useAppleHealth} from '../../hooks/applehealth/useAppleHealth';
 import Styled from './AppleHealthScreen.styled';
-import {Button} from 'react-native';
-import {useAppleWatch} from '../../hooks/applewatch/useAppleWatch';
+import {useWorkoutManager} from '../../hooks';
+import {WorkoutState} from '../../modules/applewatch/workoutState';
 
 const AppleHealthScreen = () => {
   const {
@@ -14,14 +14,32 @@ const AppleHealthScreen = () => {
     exerciseTimeMinutes,
   } = useAppleHealth();
 
-  const {sendMessageToWatch, watchMessage} = useAppleWatch();
+  const {
+    startWorkout,
+    endWorkout,
+    pauseWorkout,
+    resumeWorkout,
+    workoutState,
+    workoutStats,
+  } = useWorkoutManager();
 
   useEffect(() => {
-    initHealthKit(new Date(2023, 12, 28), new Date(2024, 1, 29));
+    initHealthKit(new Date(2024, 2, 10), new Date(2024, 2, 11));
   }, [initHealthKit]);
 
-  const onPress = () => {
-    sendMessageToWatch('message sent from iPhone');
+  const onStart = () => {
+    startWorkout();
+  };
+
+  const onTogglePause = () => {
+    if (workoutState === WorkoutState.PAUSED) {
+      resumeWorkout();
+    } else {
+      pauseWorkout();
+    }
+  };
+  const onEnd = () => {
+    endWorkout();
   };
 
   return (
@@ -47,12 +65,16 @@ const AppleHealthScreen = () => {
           {Math.floor(activeEnergyBurnedKcals)}
         </Styled.Description>
 
-        <Styled.Title>Watch Message</Styled.Title>
-        <Styled.Description>{watchMessage}</Styled.Description>
+        <Styled.Title>Workout State</Styled.Title>
+        <Styled.Description>{workoutState}</Styled.Description>
+        <Styled.Title>Workout Stats</Styled.Title>
+        <Styled.Description>{JSON.stringify(workoutStats)}</Styled.Description>
 
-        <Styled.Button onPress={onPress}>
-          Click to send a message to apple watch!
+        <Styled.Button onPress={onStart}>Start Workout</Styled.Button>
+        <Styled.Button onPress={onTogglePause}>
+          Pause/Resume Workout
         </Styled.Button>
+        <Styled.Button onPress={onEnd}>End Workout</Styled.Button>
       </Styled.Container>
     </Styled.Body>
   );

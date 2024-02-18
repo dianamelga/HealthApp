@@ -24,7 +24,7 @@
   // Add any other initialization code you need.
   // Create an instance of WatchConnectivityManager
   WatchConnectivityManager *watchManager = [WatchConnectivityManager shared];
-  [watchManager send:@"Your message"];
+  [watchManager send: @{WatchConnectivityManager.kMessage: @"Hello"}];
 
 }
 

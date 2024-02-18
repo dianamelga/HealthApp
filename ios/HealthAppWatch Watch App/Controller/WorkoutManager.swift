@@ -23,6 +23,8 @@ class WorkoutManager: NSObject, ObservableObject {
             }
         }
     }
+  
+  @Published var isIphoneAppOpen: Bool = WatchConnectivityManager.shared.isCompanionAppInstalledConnected
 
     let healthStore = HKHealthStore()
     var session: HKWorkoutSession?
@@ -65,6 +67,7 @@ class WorkoutManager: NSObject, ObservableObject {
           
           // Indicate that the session has started.
         print("Workout session started")
+        WatchConnectivityManager.shared.updateWorkoutStateToCompanionApp(WorkoutState.inProgress)
         }
     }
 
@@ -103,24 +106,25 @@ class WorkoutManager: NSObject, ObservableObject {
     func togglePause() {
         if running == true {
             self.pause()
-          WatchConnectivityManager.shared.send("workout paused")
         } else {
             resume()
-          WatchConnectivityManager.shared.send("workout resumed")
         }
     }
 
     func pause() {
         session?.pause()
+      WatchConnectivityManager.shared.updateWorkoutStateToCompanionApp(WorkoutState.paused)
     }
 
     func resume() {
         session?.resume()
+      WatchConnectivityManager.shared.updateWorkoutStateToCompanionApp(WorkoutState.inProgress)
     }
 
     func endWorkout() {
         session?.end()
         showingSummaryView = true
+      WatchConnectivityManager.shared.updateWorkoutStateToCompanionApp(WorkoutState.completed)
     }
 
     // MARK: - Workout Metrics
