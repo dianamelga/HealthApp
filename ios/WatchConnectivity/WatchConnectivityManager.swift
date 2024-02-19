@@ -109,7 +109,7 @@ final class WatchConnectivityManager: NSObject, ObservableObject {
   }
   
   private func notifyKcal() {
-      NotificationCenter.default.post(name: Notification.Name("Kcal"), object: self)
+      NotificationCenter.default.post(name: Notification.Name("kcal"), object: self)
   }
   
   private func notifyElapsedTime() {
@@ -192,8 +192,8 @@ extension WatchConnectivityManager: WCSessionDelegate {
     }
     
     if let kcalsBurned = message[WatchConnectivityManager.kKcal] as? [String: NSNumber],
-        let kcal = kcalsBurned["kcalBurned"],
-        let kcalActive = kcalsBurned["kcalActiveBurned"] {
+        let kcal = kcalsBurned["kcal"],
+        let kcalActive = kcalsBurned["activeKcal"] {
       DispatchQueue.main.async { [weak self] in
         print("Kcals received: \(kcalsBurned)")
         self?.kcalBurned = kcal

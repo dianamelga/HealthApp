@@ -136,6 +136,8 @@ class WorkoutManager: NSObject, ObservableObject {
 
     func updateForStatistics(_ statistics: HKStatistics?) {
         guard let statistics = statistics else { return }
+      
+      print("updateForStatistics")
 
         DispatchQueue.main.async {
             switch statistics.quantityType {
@@ -143,9 +145,11 @@ class WorkoutManager: NSObject, ObservableObject {
                 let heartRateUnit = HKUnit.count().unitDivided(by: HKUnit.minute())
                 self.heartRate = statistics.mostRecentQuantity()?.doubleValue(for: heartRateUnit) ?? 0
                 self.averageHeartRate = statistics.averageQuantity()?.doubleValue(for: heartRateUnit) ?? 0
+              WatchConnectivityManager.shared.send([WatchConnectivityManager.kBpm: self.heartRate])
             case HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned):
                 let energyUnit = HKUnit.kilocalorie()
                 self.activeEnergy = statistics.sumQuantity()?.doubleValue(for: energyUnit) ?? 0
+              WatchConnectivityManager.shared.send([WatchConnectivityManager.kKcal: ["kcal": self.activeEnergy, "activeKcal": self.activeEnergy]])
             case HKQuantityType.quantityType(forIdentifier: .distanceWalkingRunning), HKQuantityType.quantityType(forIdentifier: .distanceCycling):
                 let meterUnit = HKUnit.meter()
                 self.distance = statistics.sumQuantity()?.doubleValue(for: meterUnit) ?? 0
@@ -199,9 +203,10 @@ extension WorkoutManager: HKLiveWorkoutBuilderDelegate {
     }
 
     func workoutBuilder(_ workoutBuilder: HKLiveWorkoutBuilder, didCollectDataOf collectedTypes: Set<HKSampleType>) {
+      print("collectedTypes: \(collectedTypes)")
         for type in collectedTypes {
             guard let quantityType = type as? HKQuantityType else {
-                return // Nothing to do.
+              continue // Skip to the next type
             }
 
             let statistics = workoutBuilder.statistics(for: quantityType)
