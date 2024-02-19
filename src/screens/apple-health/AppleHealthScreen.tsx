@@ -54,7 +54,7 @@ const AppleHealthScreen = () => {
             <Styled.Description>{errorInitializing}</Styled.Description>
           </>
         )}
-        <Styled.Title>Exercise time in seconds</Styled.Title>
+        {/* <Styled.Title>Exercise time in seconds</Styled.Title>
         <Styled.Description>{exerciseTimeMinutes}</Styled.Description>
         <Styled.Title>Basal Energy Burned Kcal</Styled.Title>
         <Styled.Description>
@@ -63,7 +63,7 @@ const AppleHealthScreen = () => {
         <Styled.Title>Active Energy Burned Kcal</Styled.Title>
         <Styled.Description>
           {Math.floor(activeEnergyBurnedKcals)}
-        </Styled.Description>
+        </Styled.Description> */}
 
         <Styled.Title>Workout State</Styled.Title>
         <Styled.Description>{workoutState}</Styled.Description>

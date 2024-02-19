@@ -23,6 +23,7 @@ const Styled = {
   `,
   Button: styled(Button).attrs({})`
     background-color: ${DefaultTheme.colors.tertiaryContainer};
+    margin-bottom: 10px;
   `,
 };
 
