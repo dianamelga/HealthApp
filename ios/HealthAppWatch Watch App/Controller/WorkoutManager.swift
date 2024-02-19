@@ -136,8 +136,6 @@ class WorkoutManager: NSObject, ObservableObject {
 
     func updateForStatistics(_ statistics: HKStatistics?) {
         guard let statistics = statistics else { return }
-      
-      print("updateForStatistics")
 
         DispatchQueue.main.async {
             switch statistics.quantityType {
@@ -203,10 +201,9 @@ extension WorkoutManager: HKLiveWorkoutBuilderDelegate {
     }
 
     func workoutBuilder(_ workoutBuilder: HKLiveWorkoutBuilder, didCollectDataOf collectedTypes: Set<HKSampleType>) {
-      print("collectedTypes: \(collectedTypes)")
         for type in collectedTypes {
             guard let quantityType = type as? HKQuantityType else {
-              continue // Skip to the next type
+                return // Nothing to do.
             }
 
             let statistics = workoutBuilder.statistics(for: quantityType)
