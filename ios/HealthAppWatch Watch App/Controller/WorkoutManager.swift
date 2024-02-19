@@ -161,6 +161,7 @@ class WorkoutManager: NSObject, ObservableObject {
   @Published var averageHeartRate: Double = 0
   @Published var heartRate: Double = 0
   @Published var activeEnergy: Double = 0
+  @Published var energy: Double = 0
   @Published var distance: Double = 0
   @Published var workout: HKWorkout?
   
@@ -168,6 +169,7 @@ class WorkoutManager: NSObject, ObservableObject {
     guard let statistics = statistics else { return }
     
     DispatchQueue.main.async {
+      WatchConnectivityManager.shared.send([WatchConnectivityManager.kElapsedTime: Date().timeIntervalSince(self.builder?.startDate ?? Date())])
       switch statistics.quantityType {
       case HKQuantityType.quantityType(forIdentifier: .heartRate):
         let heartRateUnit = HKUnit.count().unitDivided(by: HKUnit.minute())
@@ -177,6 +179,10 @@ class WorkoutManager: NSObject, ObservableObject {
       case HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned):
         let energyUnit = HKUnit.kilocalorie()
         self.activeEnergy = statistics.sumQuantity()?.doubleValue(for: energyUnit) ?? 0
+        WatchConnectivityManager.shared.send([WatchConnectivityManager.kKcal: ["kcal": self.activeEnergy, "activeKcal": self.activeEnergy]])
+      case HKQuantityType.quantityType(forIdentifier: .basalEnergyBurned):
+        let energyUnit = HKUnit.kilocalorie()
+        self.energy = statistics.sumQuantity()?.doubleValue(for: energyUnit) ?? 0
         WatchConnectivityManager.shared.send([WatchConnectivityManager.kKcal: ["kcal": self.activeEnergy, "activeKcal": self.activeEnergy]])
       case HKQuantityType.quantityType(forIdentifier: .distanceWalkingRunning), HKQuantityType.quantityType(forIdentifier: .distanceCycling):
         let meterUnit = HKUnit.meter()

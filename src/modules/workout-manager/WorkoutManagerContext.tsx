@@ -68,9 +68,9 @@ export const WorkoutManagerProvider: React.FC<Props> = ({children}) => {
   useEffect(() => {
     updateStats({
       averageBpm: bpm,
-      kcalBurned,
-      kcalActiveBurned: activeKcalBurned,
-      elapsedTimeSeconds: 0,
+      kcalBurned: Math.floor(kcalBurned),
+      kcalActiveBurned: Math.floor(activeKcalBurned),
+      elapsedTimeSeconds: Math.floor(elapsedTimeSeconds),
     });
   }, [bpm, kcalBurned, activeKcalBurned, elapsedTimeSeconds, updateStats]);
 
